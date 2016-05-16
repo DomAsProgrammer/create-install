@@ -13,6 +13,34 @@ use File::Path;
 use Env;
 use POSIX;
 
+### Declarations
+print "\nCreate workspace...\n";
+my @date		= ( localtime ); #sec,min,h,d,M,Y,W,...
+my $maindir		= dirname(realpath($0));
+my $editor		= ( defined($ENV{EDITOR}) ) ? $ENV{EDITOR} : "vi";
+my @pacman		= ();
+my @yaourt		= ();
+my @none		= ();
+my %installed		= (); # will be build later for more informations
+my $maxlength		= 0;
+my $maxtabulator	= 0;
+my @allpacman		= ();
+chomp(my $shell		= qx(which sh));
+chomp(my $yp		= qx(which yaourt 2> /dev/null));
+chomp(my $hostn		= qx(hostname));
+my $tmp			= "$maindir/.createin_$hostn";
+
+# Build path to pacmans install file
+my $pacmanfile	= "$maindir/instpacman_${hostn}_"
+	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".sh";
+# Build path to yaourts install file
+my $yaourtfile	= "$maindir/instyaourt_${hostn}_"
+	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".sh";
+# Build path to file for not found packages
+my $nonefile	= "$maindir/instnot_${hostn}_"
+	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".info";
+
+
 ### Systemtest
 chomp(my $pacm = qx(which perl 2> /dev/null));
 if ( ! ( $pacm ) ) {
@@ -31,34 +59,7 @@ else {
 		exit(4);
 		}
 	}
-		
-
-### Declarations
-print "\nCreate workspace...\n";
-my @date		= ( localtime ); #sec,min,h,d,M,Y,W,...
-my $maindir		= dirname(realpath($0));
-my $editor		= ( defined($ENV{EDITOR}) ) ? $ENV{EDITOR} : "vi";
-my @pacman		= ();
-my @yaourt		= ();
-my @none		= ();
-my %installed		= (); # will be build later for more informations
-my $maxlength		= 0;
-my $maxtabulator	= 0;
-chomp(my $shell		= qx(which sh));
-chomp(my $yp		= qx(which yaourt 2> /dev/null));
-chomp(my $hostn		= qx(hostname));
-chomp(my @allpacman	= (grep(/^.*\/.*\ .*$/, qx(pacman -Ss))));
-my $tmp			= "$maindir/.createin_$hostn";
-
-# Build path to pacmans install file
-my $pacmanfile	= "$maindir/instpacman_${hostn}_"
-	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".sh";
-# Build path to yaourts install file
-my $yaourtfile	= "$maindir/instyaourt_${hostn}_"
-	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".sh";
-# Build path to file for not found packages
-my $nonefile	= "$maindir/instnot_${hostn}_"
-	. ( $date[5] + 1900 ) . "-" . sprintf("%02d", ( $date[4] + 1 )) . "-" . sprintf("%02d", $date[3]) . ".info";
+chomp(@allpacman	= (grep(/^.*\/.*\ .*$/, qx(pacman -Ss))));
 
 # Use tmp folder as lock
 if ( -d $tmp ) {
