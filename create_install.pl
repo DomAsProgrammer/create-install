@@ -3,7 +3,7 @@
 # License:		GPLv3 - see license file or http://www.gnu.org/licenses/gpl.html
 # Program-version:	1.1, (16th June 2016)
 # Description:		Create install scripts out of the runnnig system
-# Contact:		Dominik Bernhardt - domasprogrammer@gmail.com or 
+# Contact:		Dominik Bernhardt - domasprogrammer@gmail.com or https://github.com/DomAsProgrammer
 
 use strict;
 use warnings;
@@ -19,6 +19,19 @@ if ( ! ( $pacm ) ) {
 	print STDERR "Can't find pacman. Is this a Archlinux?\n\n";
 	exit(3);
 	}
+else {
+	my @list = ();
+	foreach my $file ( glob("/etc/*-release") ) {
+		open(RH, "<", $file);
+			@list = ( @list, grep(/arch\s*linux/i, <RH>) );
+		close(RH);
+		}
+	if ( scalar(@list) < 2 ) {
+		print STDERR "This Linux seems to be no Archlinux!\n\n";
+		exit(4);
+		}
+	}
+		
 
 ### Declarations
 print "\nCreate workspace...\n";
