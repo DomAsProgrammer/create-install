@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
 # License:		GPLv3 - see license file or http://www.gnu.org/licenses/gpl.html
-# Program-version:	1.0, (16th June 2016)
+# Program-version:	1.1, (16th June 2016)
 # Description:		Create install scripts out of the runnnig system
-# Contact:		Dominik Bernhardt - domasprogrammer@gmail.com
+# Contact:		Dominik Bernhardt - domasprogrammer@gmail.com or 
 
 use strict;
 use warnings;
@@ -12,6 +12,13 @@ use Cwd qw(realpath);
 use File::Path;
 use Env;
 use POSIX;
+
+### Systemtest
+chomp(my $pacm = qx(which perl 2> /dev/null));
+if ( ! ( $pacm ) ) {
+	print STDERR "Can't find pacman. Is this a Archlinux?\n\n";
+	exit(3);
+	}
 
 ### Declarations
 print "\nCreate workspace...\n";
