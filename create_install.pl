@@ -165,7 +165,7 @@ YN: while ( 1 ) {
 
 # clear out the list
 foreach my $getshort ( @installed ) {
-	$getshort =~ s/\s+-\s+.*$//g;
+	$getshort =~ s/^\s+|\s+-\s+.*$//g;
 	}
 
 # Sort for files
