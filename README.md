@@ -28,14 +28,14 @@ Just execute create_install.pl . There are no options or
 arguments. After execution it will need some time to collect
 informations about your installed packages. After this you will
 be asked what to do:
-	yes	=> opens vim where you can edit the list of programms
-	No	=> continues with the complete list
-	quit	=> exits this program and removes all temp files
-	help	=> prints this help
+    yes     => opens vim where you can edit the list of programms
+    No      => continues with the complete list
+    quit    => exits this program and removes all temp files
+    help    => prints this help
 "No" will create the scripts with collected informations. Default by ENTER
 "quit" will exit program without creating anything.
 "yes" will give you a list with two columns: 
-    [PACKAGE NAME]	- [DESCRIPTION]
+    [PACKAGE NAME]    - [DESCRIPTION]
  - delete a line to omit package
  - change package name, if you want a special version (e.g. vi → vim)
  - create a new line and write package name in to add this to scripts
@@ -43,20 +43,20 @@ After execution (and not quitting) you'll find one to three new files in
 the same directory like create_install.pl :
 
 - instpacman_yourhost_YYYY-MM-DD.sh
-	All packets, which can be installed via pacman will be
-	collected as runable script in the first script.
+    All packets, which can be installed via pacman will be
+    collected as runable script in the first script.
 
 - instyaourt_yourhost_YYYY-MM-DD.sh
-	Packets, which can be installt from AUR via yaourt,
-	will be collected as runable script in the second
-	script like the first. (This script will only be created
-	if yaourt is available.)
+    Packets, which can be installt from AUR via yaourt,
+    will be collected as runable script in the second
+    script like the first. (This script will only be created
+    if yaourt is available.)
 
 - instnot_yourhost_YYYY-MM-DD.txt
-	Any manually compiled (and via pacman installed) packets
-	will be listed in the third textfile. (This script will
-	only be created if there are any packages, which are not
-	found in yaourt or pacman.)
+    Any manually compiled (and via pacman installed) packets
+    will be listed in the third textfile. (This script will
+    only be created if there are any packages, which are not
+    found in yaourt or pacman.)
 
 
 LICENSE
@@ -82,4 +82,4 @@ https://github.com/DomAsProgrammer
 AUTHORS
 =======
 - Dominik Bernhardt
-	DomAsProgrammer@gmail.com ; https://github.com/DomAsProgrammer
+    DomAsProgrammer@gmail.com ; https://github.com/DomAsProgrammer
