@@ -19,7 +19,7 @@ reinstallation of base packages can cause big issues.
 SOFTWARE REQUIREMENTS
 =====================
 Perl
-- Perl 5.22.2 or higher
+- Perl 5.22.2 or higher (no older version was tested)
 
 
 DOCUMENTATION
