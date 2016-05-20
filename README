@@ -11,15 +11,15 @@ Helpful for multible installations.
 
 FEATURES
 ========
-Ready to use scripts for reinstallation.
-No base packages will be installed. I experienced
-reinstallation of base packages can cause big issues.
+- creates ready to use scripts for reinstallation.
+- no base packages will be installed. I experienced
+    reinstallation of base packages can cause big issues.
 
 
 SOFTWARE REQUIREMENTS
 =====================
 Perl
-- Perl 5.22.2 or higher (no older version was tested)
+- Perl 5.22.2 or higher
 
 
 DOCUMENTATION
