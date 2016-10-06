@@ -21,7 +21,7 @@ my $editor		= ( defined($ENV{EDITOR}) ) ? $ENV{EDITOR} : "vi";
 my @pacman		= ();
 my @yaourt		= ();
 my @none		= ();
-my %installed		= (); # will be build later for more informations
+my %installed		= (); # will be build later for more information
 my $maxlength		= 0;
 my $maxtabulator	= 0;
 my @allpacman		= ();
@@ -42,7 +42,7 @@ my $nonefile	= "$maindir/instnot_${hostn}_"
 
 
 ### Systemtest
-chomp(my $pacm = qx(which perl 2> /dev/null));
+chomp(my $pacm = qx(which pacman 2> /dev/null));
 if ( ! ( $pacm ) ) {
 	print STDERR "Can't find pacman. Is this a Archlinux?\n\n";
 	exit(3);
@@ -89,7 +89,7 @@ my $basepacks	= join('|', @basepacks);
 # Get some info about the packs
 my $total = scalar(@installed);
 my $round = 1;
-print "Collecting informations about packages...\nPlease be patient!\nCollecting ";
+print "Collecting information about packages...\nPlease be patient!\nCollecting ";
 foreach my $pack ( @installed ) {
 	my $search	= $pack;
 	print "\rCollecting [",
