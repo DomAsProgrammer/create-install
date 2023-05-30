@@ -5,6 +5,8 @@
 # Description:		Create install scripts out of the runnnig system
 # Contact:		Dominik Bernhardt - domasprogrammer@gmail.com or https://github.com/DomAsProgrammer
 
+die qq{OUTDATED! Use pacman's hooks instead!\nhttps://wiki.archlinux.org/title/Pacman#Hooks\n};
+
 use strict;
 use warnings;
 use File::Basename;
