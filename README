@@ -1,3 +1,7 @@
+OUTDATED! Use pacman's hooks instead!
+https://wiki.archlinux.org/title/Pacman#Hooks
+
+
 WHAT IS create-install.pl ?
 ===========================
 This intractive script builds files of your explicit installed
